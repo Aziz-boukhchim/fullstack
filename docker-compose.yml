@@ -1,0 +1,27 @@
+
+services:
+  backend:
+    build:
+      context: ./blog-backend  # Path to the backend folder
+    ports:
+      - "5000:5000"  # Expose backend to localhost:3000
+    environment:
+      - MONGODB_URI=mongodb+srv://azizprains06:rootroot@cluster0.5vugn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0  # Use MongoDB URI (replace with actual)
+    depends_on:
+      - mongo  # Ensure MongoDB starts before the backend
+
+  frontend:
+    build:
+      context: ./blog-frontend  # Path to the frontend folder
+    ports:
+      - "80:80"  # Expose frontend to localhost:80
+
+  mongo:
+    image: mongo:latest  # Use official MongoDB image
+    volumes:
+      - mongo-data:/data/db  # Persistent data storage for MongoDB
+    ports:
+      - "27017:27017"  # Expose MongoDB on localhost:27017
+
+volumes:
+  mongo-data:

@@ -1,0 +1,14 @@
+# Ignore node_modules directories
+node_modules/
+
+# Ignore environment files
+.env
+
+# Ignore Docker related files
+.docker/
+
+# Ignore log files
+*.log
+
+# Ignore build or cache files (you can add more specific files depending on your setup)
+build/
