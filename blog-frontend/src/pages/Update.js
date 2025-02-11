@@ -17,7 +17,7 @@ const Update = () => {
         setTitle(response.data.title);
         setContent(response.data.content);
       })
-      .catch((error) => console.error("Error fetching blog data: ", error));
+      .catch((error) => console.error("xError fetching blog data: ", error));
   }, [id]);
 
   const handleSubmit = (e) => {

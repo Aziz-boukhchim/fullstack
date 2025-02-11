@@ -5,7 +5,6 @@ import Create from "./pages/Create";
 import BlogDetails from "./pages/BlogDetails";
 import Update from "./pages/Update";
 import Delete from "./pages/Delete";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function App() {
