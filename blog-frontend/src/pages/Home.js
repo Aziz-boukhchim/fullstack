@@ -19,30 +19,41 @@ const Home = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-5">
       <h1 className="text-center mb-4">Blog Posts</h1>
-      <div className="text-center mb-3">
-        <Link to="/create" className="btn btn-primary">
+      <div className="text-center mb-4">
+        <Link to="/create" className="btn btn-dark btn-lg">
           Create New Blog
         </Link>
       </div>
 
-      <ul className="list-group">
+      <div className="row">
         {blogs.map((blog) => (
-          <li key={blog._id} className="list-group-item d-flex justify-content-between align-items-center">
-            <Link to={`/blogs/${blog._id}`} className="text-decoration-none">
-              <strong>{blog.title}</strong> - {blog.content}
-            </Link>
-
-            <div>
-              <Link to={`/blogs/update/${blog._id}`} className="btn btn-sm btn-warning me-2">
-                Edit
-              </Link>
-              <Delete id={blog._id} removeBlog={removeBlog} />
+          <div key={blog._id} className="col-md-4 mb-4">
+            <div className="card shadow-sm">
+              <div className="card-body">
+                <h5 className="card-title">{blog.title}</h5>
+                <p className="card-text">
+                  {blog.content.length > 100
+                    ? `${blog.content.substring(0, 100)}...`
+                    : blog.content}
+                </p>
+                <div className="d-flex justify-content-between">
+                  <Link to={`/blogs/${blog._id}`} className="btn btn-primary btn-sm">
+                    Read More
+                  </Link>
+                  <div>
+                    <Link to={`/blogs/update/${blog._id}`} className="btn btn-primary btn-sm me-2">
+                      Edit
+                    </Link>
+                    <Delete id={blog._id} removeBlog={removeBlog} />
+                  </div>
+                </div>
+              </div>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
